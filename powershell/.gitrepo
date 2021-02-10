@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/tyler-hogsett-microsoft/cds-powershell-quickstart
+	branch = main
+	commit = e9b119c159d41615dfde579b06199ccd6dc6f3f4
+	parent = 28cd5cbe5da3c43c055221c118a0228a0e2ac683
+	method = merge
+	cmdver = 0.4.3
