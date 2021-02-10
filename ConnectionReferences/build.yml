@@ -9,7 +9,7 @@ pool:
 steps:
 - powershell: |
     mkdir $(Pipeline.Workspace)/packed-solution
-    & powershell/solutions/Compress-Solution.ps1
+    & powershell/solutions/Compress-Solution.ps1 `
       -SourceFolderPath ConnectionReferences/solution `
       -SolutionZipFilePath $(Pipeline.Workspace)/packed-solution/ContosoConnectionReferences.zip `
       -PackageType Both
