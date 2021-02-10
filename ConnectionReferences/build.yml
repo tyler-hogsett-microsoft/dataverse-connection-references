@@ -1,0 +1,20 @@
+trigger:
+  paths:
+    include:
+    - ConnectionReferences/solution/*
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- powershell: |
+    & powershell/solutions/doctoring/Add-KeysToMissingDependencies.ps1 `
+      -SolutionFolderPath ConnectionReferences/solution
+    mkdir $(Pipeline.Workspace)/packed-solution
+    & powershell/solutions/Run-SolutionPackager `
+      -Action Pack `
+      -ZipFile $(Pipeline.Workspace)/packed-solution/ContosoConnectionReferences.zip `
+      -PackageType Both `
+      -Folder ConnectionReferences/solution
+- publish: $(Pipeline.Workspace)/packed-solution
+  artifact: packed-solution

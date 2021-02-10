@@ -1,1 +1,1 @@
-& $PSScriptRoot\powershell\solutions\Export-Solution.ps1 $null ContosoConnectionReferences ConnectionReferences
+& $PSScriptRoot\powershell\solutions\Export-Solution.ps1 $null ContosoConnectionReferences ConnectionReferences/solution

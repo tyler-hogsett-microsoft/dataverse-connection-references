@@ -1,1 +1,1 @@
-& $PSScriptRoot\powershell\solutions\Export-Solution.ps1 $null ContosoFlows Flows
+& $PSScriptRoot\powershell\solutions\Export-Solution.ps1 $null ContosoFlows Flows/solution
