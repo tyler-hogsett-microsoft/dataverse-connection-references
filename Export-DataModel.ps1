@@ -1,1 +1,1 @@
-& $PSScriptRoot\powershell\solutions\Export-Solution.ps1 $null ContosoDataModel ContosoDataModel
+& $PSScriptRoot\powershell\solutions\Export-Solution.ps1 $null ContosoDataModel DataModel
