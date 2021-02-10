@@ -1,0 +1,13 @@
+trigger:
+  paths:
+    include:
+    - DataModel/solution/*
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- template: ../yaml/templates/build-solution.yml
+  parameters:
+    SolutionFolderPath: DataModel/solution
+    SolutionUniqueName: ContosoDataModel

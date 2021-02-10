@@ -1,0 +1,13 @@
+trigger:
+  paths:
+    include:
+    - Flows/solution/*
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- template: ../yaml/templates/build-solution.yml
+  parameters:
+    SolutionFolderPath: Flows/solution
+    SolutionUniqueName: ContosoFlows
