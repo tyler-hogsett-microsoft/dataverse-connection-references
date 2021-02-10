@@ -8,13 +8,10 @@ pool:
 
 steps:
 - powershell: |
-    & powershell/solutions/doctoring/Add-KeysToMissingDependencies.ps1 `
-      -SolutionFolderPath ConnectionReferences/solution
     mkdir $(Pipeline.Workspace)/packed-solution
-    & powershell/solutions/Run-SolutionPackager `
-      -Action Pack `
-      -ZipFile $(Pipeline.Workspace)/packed-solution/ContosoConnectionReferences.zip `
-      -PackageType Both `
-      -Folder ConnectionReferences/solution
+    & powershell/solutions/Compress-Solution.ps1
+      -SourceFolderPath ConnectionReferences/solution `
+      -SolutionZipFilePath $(Pipeline.Workspace)/packed-solution/ContosoConnectionReferences.zip `
+      -PackageType Both
 - publish: $(Pipeline.Workspace)/packed-solution
   artifact: packed-solution
