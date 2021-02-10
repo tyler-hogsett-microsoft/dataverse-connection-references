@@ -7,7 +7,7 @@ pool:
   vmImage: windows-latest
 
 steps:
-- template: yaml/templates/build-solution.yml
+- template: ../yaml/templates/build-solution.yml
   parameters:
     SolutionFolderPath: ConnectionReferences/solution
     SolutionUniqueName: ContosoConnectionReferences
