@@ -7,11 +7,7 @@ pool:
   vmImage: windows-latest
 
 steps:
-- powershell: |
-    mkdir $(Pipeline.Workspace)/packed-solution
-    & powershell/solutions/Compress-Solution.ps1 `
-      -SourceFolderPath ConnectionReferences/solution `
-      -SolutionZipFilePath $(Pipeline.Workspace)/packed-solution/ContosoConnectionReferences.zip `
-      -PackageType Both
-- publish: $(Pipeline.Workspace)/packed-solution
-  artifact: packed-solution
+- template: yaml/templates/build-solution.yml
+  parameters:
+    SolutionFolderPath: ConnectionReferences/solution
+    SolutionUniqueName: ContosoConnectionReferences
