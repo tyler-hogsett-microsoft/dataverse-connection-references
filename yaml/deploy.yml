@@ -46,3 +46,10 @@ jobs:
           vmImage: windows-latest
         steps:
         - checkout: self
+        - task: PowerPlatformImportSolution@0
+          inputs:
+            authenticationType: 'PowerPlatformEnvironment'
+            PowerPlatformEnvironment: 'production'
+            SolutionInputFile: '$(Pipeline.Workspace)/BuildCanvasApps/packed-solution/ContosoCanvasApps_managed.zip'
+            AsyncOperation: true
+            MaxAsyncWaitTime: '60'
