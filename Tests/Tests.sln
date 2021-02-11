@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contoso.Tests", "Contoso.Tests.csproj", "{A8EA37C8-9372-4EAF-B575-33A83005B6A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Dynamics365.UIAutomation.Api", "..\EasyRepro\Microsoft.Dynamics365.UIAutomation.Api\Microsoft.Dynamics365.UIAutomation.Api.csproj", "{DFE2C141-F1AA-4D4B-8DF8-0FB93023CF45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Dynamics365.UIAutomation.Browser", "..\EasyRepro\Microsoft.Dynamics365.UIAutomation.Browser\Microsoft.Dynamics365.UIAutomation.Browser.csproj", "{C9748803-F3CB-4531-B313-BC24D4D0BF0C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{A8EA37C8-9372-4EAF-B575-33A83005B6A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8EA37C8-9372-4EAF-B575-33A83005B6A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8EA37C8-9372-4EAF-B575-33A83005B6A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFE2C141-F1AA-4D4B-8DF8-0FB93023CF45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFE2C141-F1AA-4D4B-8DF8-0FB93023CF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFE2C141-F1AA-4D4B-8DF8-0FB93023CF45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFE2C141-F1AA-4D4B-8DF8-0FB93023CF45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9748803-F3CB-4531-B313-BC24D4D0BF0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9748803-F3CB-4531-B313-BC24D4D0BF0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9748803-F3CB-4531-B313-BC24D4D0BF0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9748803-F3CB-4531-B313-BC24D4D0BF0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

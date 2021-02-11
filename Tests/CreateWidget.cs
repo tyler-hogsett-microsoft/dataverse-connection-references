@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Microsoft.Dynamics365.UIAutomation.Browser;
-using Microsoft.PowerApps.UIAutomation.Api;
 using System;
 using System.Security;
 using System.Configuration;
+using Microsoft.Dynamics365.UIAutomation.Api;
+using Microsoft.Dynamics365.UIAutomation.Browser;
 
 namespace Contoso.Tests
 {
@@ -21,18 +21,15 @@ namespace Contoso.Tests
         [TestMethod]
         public void EnsureNameOverride()
         {
-            using (var browser = new PowerAppBrowser(
+            using (var browser = new Browser(
                 new BrowserOptions
                 {
-                    BrowserType = BrowserType.Chrome
+                    BrowserType = BrowserType.Chrome,
+                    Headless = true
                 }))
             {
-                browser.OnlineLogin.Login(Url, Username, Password,
-                    eventArgs =>
-                    {
-                        Console.WriteLine(eventArgs.Driver.Url);
-                    });
-                
+                browser.LoginPage.Login(Url, Username, Password);
+
             }
         }
     }
