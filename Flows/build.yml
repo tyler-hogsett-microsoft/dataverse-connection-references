@@ -6,6 +6,11 @@ trigger:
 pool:
   vmImage: windows-latest
 
+variables:
+- template: ../yaml/templates/build-solution-variables.yml
+  parameters:
+    SolutionUniqueName: ContosoFlows
+
 steps:
 - template: ../yaml/templates/build-solution.yml
   parameters:
