@@ -1,17 +1,26 @@
 parameters:
   SolutionFolderPath: ''
   SolutionUniqueName: ''
+  MapFilePath: ''
 
 steps:
 - powershell: |
     mkdir $(Pipeline.Workspace)/packed-solution
-    & powershell/solutions/Compress-Solution.ps1 `
-      -SourceFolderPath $env:SOLUTION_FOLDER_PATH `
-      -SolutionZipFilePath $(Pipeline.Workspace)/packed-solution/$env:SOLUTION_UNIQUE_NAME.zip `
-      -PackageType Both
+    $parameters = @{
+      SourceFolderPath = $env:SOLUTION_FOLDER_PATH
+      SolutionZipFilePath = $(Pipeline.Workspace)/packed-solution/$env:SOLUTION_UNIQUE_NAME.zip
+      PackageType = "Both"
+    }
+    if(-not [string]::IsNullOrEmpty($env:MAP_FILE_PATH)) {
+      $parameters.map = $env:MAP_FILE_PATH
+    }
+    & powershell/solutions/Compress-Solution.ps1 @parameters
   name: PackSolution
   env:
     SOLUTION_FOLDER_PATH: ${{ parameters.SolutionFolderPath }}
     SOLUTION_UNIQUE_NAME: ${{ parameters.SolutionUniqueName }}
+    MAP_FILE_PATH: ${{ parameters.MapFilePath }}
+    SRC_ROOT: $(Build.SourcesDirectory)
+
 - publish: $(Pipeline.Workspace)/packed-solution
   artifact: packed-solution
