@@ -48,7 +48,7 @@ jobs:
         - checkout: self
         - task: PowerShell@2
           inputs:
-            filePath: environment-setup/Initialize-Context.ps1
+            filePath: powershell/environment-setup/Initialize-Context.ps1
             arguments: |
               -Url $env:URL `
               -ClientId $env:CLIENT_ID `
