@@ -59,7 +59,7 @@ jobs:
             CLIENT_SECRET: $(ClientSecret)
           name: EstablishConnection
         - powershell: |
-            & powershell/solutions/Import-Solution.ps1 `
+            & $(Build.SourcesDirectory)/powershell/solutions/Import-Solution.ps1 `
               -SolutionZipFilePath $env:SOLUTION_ZIP_FILE_PATH `
               -Managed
           env:
