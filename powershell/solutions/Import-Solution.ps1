@@ -2,6 +2,7 @@ param(
     $Connection,
     [Parameter(Mandatory=$true)]
     [string]$SourceFolderPath,
+    [string]$MapFilePath,
     [switch]$Managed
 )
 
@@ -17,7 +18,8 @@ $solutionFilePath = "$PSScriptRoot\..\temp\solution.zip"
 & $PSScriptRoot\Compress-Solution.ps1 `
     -SourceFolderPath $SourceFolderPath `
     -SolutionZipFilePath $solutionFilePath `
-    -PackageType $(if($Managed) { "Managed" } else { "Unmanaged" })
+    -PackageType $(if($Managed) { "Managed" } else { "Unmanaged" }) `
+    -MapFilePath $MapFilePath
 
 Import-CrmSolution `
     -conn $Connection `

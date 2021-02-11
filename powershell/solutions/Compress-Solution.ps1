@@ -5,7 +5,8 @@ param(
     [string]$SolutionZipFilePath,
     [Parameter(Mandatory)]
     [ValidateSet("Managed", "Unmanaged", "Both")]
-    [string]$PackageType = "Both"
+    [string]$PackageType = "Both",
+    [string]$MapFilePath
 )
 
 . $PSScriptRoot\..\environment-setup\Add-ModulesPath.ps1
@@ -27,4 +28,5 @@ Remove-Item $SolutionZipFilePath -ErrorAction Ignore
     -Action Pack `
     -ZipFile $SolutionZipFilePath `
     -PackageType $PackageType `
-    -Folder $preSolutionPackagerDoctoredFolderPath
+    -Folder $preSolutionPackagerDoctoredFolderPath `
+    -Map $MapFilePath
