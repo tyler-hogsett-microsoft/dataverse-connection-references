@@ -8,9 +8,10 @@ steps:
   inputs:
     filePath: powershell/solutions/Set-VersionNumber.ps1
     arguments: |
-      -SolutionFolderPath Test `
+      -SolutionFolderPath $env:SOLUTION_FOLDER_PATH `
       -VersionNumber $env:VERSION_NUMBER
   env:
+    SOLUTION_FOLDER_PATH: ${{ parameters.SolutionFolderPath }}
     VERSION_NUMBER: $(versionNumber)
   name: SetVersion
 - powershell: |
