@@ -3,4 +3,5 @@ parameters:
   VersionPrefix: '1.0.0'
 
 variables:
-  revisionNumber: $[counter(format('{0} {1}', parameters.SolutionUniqueName, parameters.VersionPrefix), 0)]
+  versionSeed: ${{ parameters.SolutionUniqueName }} ${{ parameters.VersionPrefix }}
+  revisionNumber: $[counter(variables.versionSeed, 0)]
