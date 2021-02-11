@@ -36,6 +36,9 @@ resources:
 jobs:
 - deployment:
   environment: production
+  variables:
+  - group: Production
+  - group: ClientCredentials
   strategy:
     runOnce:
       deploy:
@@ -45,6 +48,18 @@ jobs:
         - checkout: self
         - task: PowerShell@2
           inputs:
+            filePath: environment-setup/Initialize-Context.ps1
+            arguments: |
+              -Url $env:URL `
+              -ClientId $env:CLIENT_ID `
+              -ClientSecret $env:CLIENT_SECRET
+          env:
+            URL: $(Url)
+            CLIENT_ID: $(ClientId)
+            CLIENT_SECRET: $(ClientSecret)
+          name: EstablishConnection
+        - task: PowerShell@2
+          inputs:
             filePath: powershell/solutions/Import-Solution.ps1
             arguments: |
               -SolutionZipFilePath $env:SOLUTION_ZIP_FILE_PATH `
@@ -52,4 +67,4 @@ jobs:
           env:
             SOLUTION_ZIP_FILE_PATH: $(Pipeline.Workspace)/BuildCanvasApps/ContosoCanvasApps_managed.zip
             VERSION_NUMBER: $(versionNumber)
-          name: SetVersion
+          name: ImportCanvasApps
