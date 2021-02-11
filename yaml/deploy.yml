@@ -52,7 +52,7 @@ jobs:
             arguments: |
               -Url $env:URL `
               -ClientId $env:CLIENT_ID `
-              -ClientSecret $env:CLIENT_SECRET
+              -ClientSecret (ConvertTo-SecureString $env:CLIENT_SECRET -Force -AsPlainText)
           env:
             URL: $(Url)
             CLIENT_ID: $(ClientId)
