@@ -20,7 +20,7 @@ $parameters = @(
     "/useUnmanagedFileForMissingManaged"
 )
 
-if($Map -ne $null) {
+if(-not [string]::IsNullOrEmpty($Map)) {
     $parameters += "/map:$Map"
 }
 
