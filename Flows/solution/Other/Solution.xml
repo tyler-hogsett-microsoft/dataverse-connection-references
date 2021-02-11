@@ -6,7 +6,7 @@
       <LocalizedName description="Contoso - Flows" languagecode="1033" />
     </LocalizedNames>
     <Descriptions />
-    <Version>1.0.0.1</Version>
+    <Version>1.0.0.2</Version>
     <Managed>2</Managed>
     <Publisher>
       <UniqueName>contoso</UniqueName>
@@ -79,6 +79,7 @@
     </Publisher>
     <RootComponents>
       <RootComponent behavior="0" id="{c1808576-606b-eb11-a812-000d3a19c9ce}" type="29" />
+      <RootComponent behavior="0" id="{d133bb1b-086c-eb11-a812-000d3a19c9ce}" type="29" />
     </RootComponents>
     <MissingDependencies>
       <MissingDependency>
