@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/git-commands/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/microsoft/EasyRepro.git
+	branch = develop
+	commit = 317f2b4c6c2b8ede632e75d05e2d844d09f3a7f1
+	parent = 1910abcf82803b283c5b4a93096ab529ca9aad93
+	method = merge
+	cmdver = 0.4.3
