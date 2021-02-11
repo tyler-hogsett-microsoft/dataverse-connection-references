@@ -2,8 +2,18 @@ parameters:
   SolutionFolderPath: ''
   SolutionUniqueName: ''
   MapFilePath: ''
+  VersionPrefix: '1.0.0'
+
+variables:
+  revisionNumber: $[counter(format('{0} {1}', parameters.SolutionUniqueName, parameters.VersionPrefix), 0)]
 
 steps:
+- task: PowerShell@2
+  inputs:
+    filePath: powershell/solutions/Set-VersionNumber.ps1
+    arguments: |
+      -SolutionFolderPath Test
+      -VersionNumber $(VersionPrefix).$(revisionNumber)
 - powershell: |
     mkdir $(Pipeline.Workspace)/packed-solution
     $parameters = @{
