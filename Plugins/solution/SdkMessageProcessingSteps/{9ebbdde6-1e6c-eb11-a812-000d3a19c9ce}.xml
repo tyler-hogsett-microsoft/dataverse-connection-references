@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="Contoso.Plugins.AllWidgetsAreFoos: Create of contoso_widget" SdkMessageProcessingStepId="{9ebbdde6-1e6c-eb11-a812-000d3a19c9ce}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>Contoso.Plugins.AllWidgetsAreFoos, Contoso.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4584e3b01a70af87</PluginTypeName>
+  <PluginTypeId>50ffa6f1-ce29-4089-bc26-0b0f4ffc3e5a</PluginTypeId>
+  <PrimaryEntity>contoso_widget</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>Contoso.Plugins.AllWidgetsAreFoos: Create of contoso_widget</Description>
+  <FilteringAttributes></FilteringAttributes>
+  <InvocationSource>1</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>20</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages />
+</SdkMessageProcessingStep>
