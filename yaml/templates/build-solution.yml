@@ -2,7 +2,6 @@ parameters:
   SolutionFolderPath: ''
   SolutionUniqueName: ''
   MapFilePath: ''
-  VersionPrefix: '1.0.0'
 
 steps:
 - task: PowerShell@2
@@ -12,7 +11,7 @@ steps:
       -SolutionFolderPath Test `
       -VersionNumber $env:VERSION_NUMBER
   env:
-    VERSION_NUMBER: ${{ parameters.VersionPrefix }}.$(revisionNumber)
+    VERSION_NUMBER: $(versionNumber)
   name: SetVersion
 - powershell: |
     mkdir $(Pipeline.Workspace)/packed-solution

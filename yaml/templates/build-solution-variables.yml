@@ -5,3 +5,4 @@ parameters:
 variables:
   versionSeed: ${{ parameters.SolutionUniqueName }} ${{ parameters.VersionPrefix }}
   revisionNumber: $[counter(variables.versionSeed, 0)]
+  versionNumber: ${{ parameters.VersionPrefix }}.$(revisionNumber)
