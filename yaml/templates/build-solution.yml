@@ -8,7 +8,7 @@ steps:
     mkdir $(Pipeline.Workspace)/packed-solution
     $parameters = @{
       SourceFolderPath = $env:SOLUTION_FOLDER_PATH
-      SolutionZipFilePath = $(Pipeline.Workspace)/packed-solution/$env:SOLUTION_UNIQUE_NAME.zip
+      SolutionZipFilePath = "$(Pipeline.Workspace)/packed-solution/$env:SOLUTION_UNIQUE_NAME.zip"
       PackageType = "Both"
     }
     if(-not [string]::IsNullOrEmpty($env:MAP_FILE_PATH)) {
