@@ -45,6 +45,7 @@ jobs:
     runOnce:
       deploy:
         steps:
+        - task: PowerPlatformToolInstaller@0
         - task: PowerPlatformImportSolution@0
           inputs:
             authenticationType: 'PowerPlatformEnvironment'
