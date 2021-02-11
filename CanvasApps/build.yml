@@ -1,0 +1,18 @@
+trigger:
+  paths:
+    include:
+    - CanvasApps/solution/*
+
+pool:
+  vmImage: windows-latest
+
+variables:
+- template: ../yaml/templates/build-solution-variables.yml
+  parameters:
+    SolutionUniqueName: ContosoCanvasApps
+
+steps:
+- template: ../yaml/templates/build-solution.yml
+  parameters:
+    SolutionFolderPath: CanvasApps/solution
+    SolutionUniqueName: ContosoCanvasApps
