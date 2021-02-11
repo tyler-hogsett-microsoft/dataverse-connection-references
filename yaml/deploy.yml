@@ -58,13 +58,21 @@ jobs:
             CLIENT_ID: $(ClientId)
             CLIENT_SECRET: $(ClientSecret)
           name: EstablishConnection
-        - task: PowerShell@2
-          inputs:
-            filePath: powershell/solutions/Import-Solution.ps1
-            arguments: |
+        - powershell: |
+            & powershell/solutions/Import-Solution.ps1 `
               -SolutionZipFilePath $env:SOLUTION_ZIP_FILE_PATH `
               -Managed
           env:
             SOLUTION_ZIP_FILE_PATH: $(Pipeline.Workspace)/BuildCanvasApps/ContosoCanvasApps_managed.zip
             VERSION_NUMBER: $(versionNumber)
           name: ImportCanvasApps
+        #- task: PowerShell@2
+        #  inputs:
+        #    filePath: powershell/solutions/Import-Solution.ps1
+        #    arguments: |
+        #      -SolutionZipFilePath $env:SOLUTION_ZIP_FILE_PATH `
+        #      -Managed
+        #  env:
+        #    SOLUTION_ZIP_FILE_PATH: $(Pipeline.Workspace)/BuildCanvasApps/ContosoCanvasApps_managed.zip
+        #    VERSION_NUMBER: $(versionNumber)
+        #  name: ImportCanvasApps
