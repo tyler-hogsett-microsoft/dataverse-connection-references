@@ -1,7 +1,9 @@
 param(
     $Connection,
-    [Parameter(Mandatory=$true)]
+    [Parameter(Mandatory=$true, ParameterSetName = "Folder")]
     [string]$SourceFolderPath,
+    [Parameter(Mandatory=$true, ParameterSetName = "File")]
+    [string]$SolutionZipFilePath,
     [string]$MapFilePath,
     [switch]$Managed
 )
@@ -13,17 +15,19 @@ if($Connection -eq $null)
     $Connection = (. $PSScriptRoot\..\cds\Get-CrmConnection.ps1)
 }
 
-$solutionFilePath = "$PSScriptRoot\..\temp\solution.zip"
+if($SolutionFilePath -eq $null) {
+    $SolutionZipFilePath = "$PSScriptRoot\..\temp\solution.zip"
 
-& $PSScriptRoot\Compress-Solution.ps1 `
-    -SourceFolderPath $SourceFolderPath `
-    -SolutionZipFilePath $solutionFilePath `
-    -PackageType $(if($Managed) { "Managed" } else { "Unmanaged" }) `
-    -MapFilePath $MapFilePath
+    & $PSScriptRoot\Compress-Solution.ps1 `
+        -SourceFolderPath $SourceFolderPath `
+        -SolutionZipFilePath $SolutionZipFilePath `
+        -PackageType $(if($Managed) { "Managed" } else { "Unmanaged" }) `
+        -MapFilePath $MapFilePath
+}
 
 Import-CrmSolution `
     -conn $Connection `
-    -SolutionFilePath $solutionFilePath `
+    -SolutionFilePath $SolutionZipFilePath `
     -ActivatePlugIns `
     -AsyncOperationImportMethod
 
