@@ -9,8 +9,9 @@ steps:
   inputs:
     filePath: powershell/solutions/Set-VersionNumber.ps1
     arguments: |
-      -SolutionFolderPath Test
+      -SolutionFolderPath Test `
       -VersionNumber $(VersionPrefix).$(revisionNumber)
+  name: SetVersion
 - powershell: |
     mkdir $(Pipeline.Workspace)/packed-solution
     $parameters = @{
