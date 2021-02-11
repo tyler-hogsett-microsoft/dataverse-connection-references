@@ -32,3 +32,14 @@ resources:
     trigger:
       branches:
       - main
+
+jobs:
+- deployment:
+  environment: production
+  strategy:
+    runOnce:
+      deploy:
+        pool:
+          vmImage: windows-latest
+        steps:
+        - checkout: self
