@@ -1,0 +1,6 @@
+parameters:
+  SolutionUniqueName: ''
+  VersionPrefix: '1.0.0'
+
+variables:
+  revisionNumber: $[counter(format('{0} {1}', parameters.SolutionUniqueName, parameters.VersionPrefix), 0)]

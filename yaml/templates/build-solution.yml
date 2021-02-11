@@ -4,9 +4,6 @@ parameters:
   MapFilePath: ''
   VersionPrefix: '1.0.0'
 
-variables:
-  revisionNumber: $[counter(format('{0} {1}', parameters.SolutionUniqueName, parameters.VersionPrefix), 0)]
-
 steps:
 - task: PowerShell@2
   inputs:
