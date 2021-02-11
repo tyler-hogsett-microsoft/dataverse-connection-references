@@ -51,27 +51,32 @@ jobs:
             PowerPlatformEnvironment: 'production'
             SolutionInputFile: '$(Pipeline.Workspace)/BuildDataModel/packed-solution/ContosoDataModel_managed.zip'
             AsyncOperation: true
+          name: ImportDataModel
         - task: PowerPlatformImportSolution@0
           inputs:
             authenticationType: 'PowerPlatformEnvironment'
             PowerPlatformEnvironment: 'production'
             SolutionInputFile: '$(Pipeline.Workspace)/BuildConnectionReferences/packed-solution/ContosoConnectionReferences_managed.zip'
             AsyncOperation: true
+          name: ImportConnectionReferences
         - task: PowerPlatformImportSolution@0
           inputs:
             authenticationType: 'PowerPlatformEnvironment'
             PowerPlatformEnvironment: 'production'
             SolutionInputFile: '$(Pipeline.Workspace)/BuildFlows/packed-solution/ContosoFlows_managed.zip'
             AsyncOperation: true
+          name: ImportFlows
         - task: PowerPlatformImportSolution@0
           inputs:
             authenticationType: 'PowerPlatformEnvironment'
             PowerPlatformEnvironment: 'production'
             SolutionInputFile: '$(Pipeline.Workspace)/BuildCanvasApps/packed-solution/ContosoCanvasApps_managed.zip'
             AsyncOperation: true
+          name: ImportCanvasApps
         - task: PowerPlatformImportSolution@0
           inputs:
             authenticationType: 'PowerPlatformEnvironment'
             PowerPlatformEnvironment: 'production'
             SolutionInputFile: '$(Pipeline.Workspace)/BuildPlugins/packed-solution/ContosoPlugins_managed.zip'
             AsyncOperation: true
+          name: ImportPlugins
