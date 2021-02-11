@@ -8,6 +8,15 @@ pool:
   vmImage: windows-latest
 
 steps:
+- task: NuGetToolInstaller@1
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+    restoreSolution: 'Plugins/Contoso.Plugins/Contoso.Plugins.sln'
+- task: VSBuild@1
+  inputs:
+    solution: 'Plugins/Contoso.Plugins/Contoso.Plugins.sln'
+    configuration: 'release'
 - template: ../yaml/templates/build-solution.yml
   parameters:
     SolutionFolderPath: Plugins/solution
