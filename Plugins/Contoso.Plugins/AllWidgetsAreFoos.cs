@@ -10,7 +10,7 @@ namespace Contoso.Plugins
             var context = (IPluginExecutionContext)
                 serviceProvider.GetService(typeof(IPluginExecutionContext));
             var target = (Entity)context.InputParameters["Target"];
-            target["contoso_name"] = "Foos";
+            target["contoso_name"] = "Foobar";
         }
     }
 }
