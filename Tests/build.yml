@@ -1,0 +1,21 @@
+trigger:
+  paths:
+    include:
+    - Tests/*
+    - EasyRepro/*
+
+pool:
+  vmImage: windows-latest
+
+steps:
+- task: NuGetToolInstaller@1
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
+    restoreSolution: 'Tests/Tests.sln'
+- task: VSBuild@1
+  inputs:
+    solution: 'Tests/Tests.sln'
+    configuration: 'release'
+- publish: 'Tests/bin/Release/*'
+  artifact: tests
