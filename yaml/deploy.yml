@@ -99,8 +99,3 @@ jobs:
       testSelector: 'testAssemblies'
       testAssemblyVer2: 'Contoso.Tests.dll'
       searchFolder: '$(Pipeline.Workspace)/BuildTests/Tests'
-  - task: PublishTestResults@2
-    inputs:
-      testResultsFormat: 'JUnit'
-      testResultsFiles: '**/TEST-*.xml'
-      failTaskOnFailedTests: true
