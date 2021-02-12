@@ -1,108 +1,108 @@
 trigger: none
 
 resources:
-  pipelines:
-  - pipeline: BuildCanvasApps
-    branch: main
-    source: BuildCanvasApps
-    trigger:
-      branches:
-      - main
-  - pipeline: BuildConnectionReferences
-    branch: main
-    source: BuildConnectionReferences
-    trigger:
-      branches:
-      - main
-  - pipeline: BuildDataModel
-    branch: main
-    source: BuildDataModel
-    trigger:
-      branches:
-      - main
-  - pipeline: BuildFlows
-    branch: main
-    source: BuildFlows
-    trigger:
-      branches:
-      - main
-  - pipeline: BuildPlugins
-    branch: main
-    source: BuildPlugins
-    trigger:
-      branches:
-      - main
-#  - pipeline: BuildTests
+#  pipelines:
+#  - pipeline: BuildCanvasApps
 #    branch: main
-#    source: BuildTests
+#    source: BuildCanvasApps
 #    trigger:
 #      branches:
 #      - main
+#  - pipeline: BuildConnectionReferences
+#    branch: main
+#    source: BuildConnectionReferences
+#    trigger:
+#      branches:
+#      - main
+#  - pipeline: BuildDataModel
+#    branch: main
+#    source: BuildDataModel
+#    trigger:
+#      branches:
+#      - main
+#  - pipeline: BuildFlows
+#    branch: main
+#    source: BuildFlows
+#    trigger:
+#      branches:
+#      - main
+#  - pipeline: BuildPlugins
+#    branch: main
+#    source: BuildPlugins
+#    trigger:
+#      branches:
+#      - main
+  - pipeline: BuildTests
+    branch: main
+    source: BuildTests
+    trigger:
+      branches:
+      - main
 
 variables:
 - group: Production
 
 jobs:
-- deployment: Deploy
-  environment: production
-  pool:
-    vmImage: windows-latest
-  variables:
-  - group: ClientCredentials
-  strategy:
-    runOnce:
-      deploy:
-        steps:
-        - task: PowerPlatformToolInstaller@0
-        - task: PowerPlatformImportSolution@0
-          inputs:
-            authenticationType: 'PowerPlatformEnvironment'
-            PowerPlatformEnvironment: 'production'
-            SolutionInputFile: '$(Pipeline.Workspace)/BuildDataModel/packed-solution/ContosoDataModel_managed.zip'
-            AsyncOperation: true
-          name: ImportDataModel
-        - task: PowerPlatformImportSolution@0
-          inputs:
-            authenticationType: 'PowerPlatformEnvironment'
-            PowerPlatformEnvironment: 'production'
-            SolutionInputFile: '$(Pipeline.Workspace)/BuildConnectionReferences/packed-solution/ContosoConnectionReferences_managed.zip'
-            AsyncOperation: true
-          name: ImportConnectionReferences
-        - task: PowerPlatformImportSolution@0
-          inputs:
-            authenticationType: 'PowerPlatformEnvironment'
-            PowerPlatformEnvironment: 'production'
-            SolutionInputFile: '$(Pipeline.Workspace)/BuildFlows/packed-solution/ContosoFlows_managed.zip'
-            AsyncOperation: true
-          name: ImportFlows
-        - task: PowerPlatformImportSolution@0
-          inputs:
-            authenticationType: 'PowerPlatformEnvironment'
-            PowerPlatformEnvironment: 'production'
-            SolutionInputFile: '$(Pipeline.Workspace)/BuildCanvasApps/packed-solution/ContosoCanvasApps_managed.zip'
-            AsyncOperation: true
-          name: ImportCanvasApps
-        - task: PowerPlatformImportSolution@0
-          inputs:
-            authenticationType: 'PowerPlatformEnvironment'
-            PowerPlatformEnvironment: 'production'
-            SolutionInputFile: '$(Pipeline.Workspace)/BuildPlugins/packed-solution/ContosoPlugins_managed.zip'
-            AsyncOperation: true
-          name: ImportPlugins
-#- job: Test
+#- deployment: Deploy
+#  environment: production
 #  pool:
-#    vmImage: vs2017-win2016
+#    vmImage: windows-latest
 #  variables:
-#  - group: TestCredentials
-#  steps:
-#  - download: BuildTests
-#  - task: VSTest@2
-#    inputs:
-#      testSelector: 'testAssemblies'
-#      testAssemblyVer2: 'Contoso.Tests.dll'
-#      searchFolder: '$(Pipeline.Workspace)/BuildTests/Tests'
-#      uiTests: true
-#    env:
-#      URL: $(Url)
-#      USERNAME: $(Username)
-#      PASSWORD: $(Password)
+#  - group: ClientCredentials
+#  strategy:
+#    runOnce:
+#      deploy:
+#        steps:
+#        - task: PowerPlatformToolInstaller@0
+#        - task: PowerPlatformImportSolution@0
+#          inputs:
+#            authenticationType: 'PowerPlatformEnvironment'
+#            PowerPlatformEnvironment: 'production'
+#            SolutionInputFile: '$(Pipeline.Workspace)/BuildDataModel/packed-solution/ContosoDataModel_managed.zip'
+#            AsyncOperation: true
+#          name: ImportDataModel
+#        - task: PowerPlatformImportSolution@0
+#          inputs:
+#            authenticationType: 'PowerPlatformEnvironment'
+#            PowerPlatformEnvironment: 'production'
+#            SolutionInputFile: '$(Pipeline.Workspace)/BuildConnectionReferences/packed-solution/ContosoConnectionReferences_managed.zip'
+#            AsyncOperation: true
+#          name: ImportConnectionReferences
+#        - task: PowerPlatformImportSolution@0
+#          inputs:
+#            authenticationType: 'PowerPlatformEnvironment'
+#            PowerPlatformEnvironment: 'production'
+#            SolutionInputFile: '$(Pipeline.Workspace)/BuildFlows/packed-solution/ContosoFlows_managed.zip'
+#            AsyncOperation: true
+#          name: ImportFlows
+#        - task: PowerPlatformImportSolution@0
+#          inputs:
+#            authenticationType: 'PowerPlatformEnvironment'
+#            PowerPlatformEnvironment: 'production'
+#            SolutionInputFile: '$(Pipeline.Workspace)/BuildCanvasApps/packed-solution/ContosoCanvasApps_managed.zip'
+#            AsyncOperation: true
+#          name: ImportCanvasApps
+#        - task: PowerPlatformImportSolution@0
+#          inputs:
+#            authenticationType: 'PowerPlatformEnvironment'
+#            PowerPlatformEnvironment: 'production'
+#            SolutionInputFile: '$(Pipeline.Workspace)/BuildPlugins/packed-solution/ContosoPlugins_managed.zip'
+#            AsyncOperation: true
+#          name: ImportPlugins
+- job: Test
+  pool:
+    vmImage: vs2017-win2016
+  variables:
+  - group: TestCredentials
+  steps:
+  - download: BuildTests
+  - task: VSTest@2
+    inputs:
+      testSelector: 'testAssemblies'
+      testAssemblyVer2: 'Contoso.Tests.dll'
+      searchFolder: '$(Pipeline.Workspace)/BuildTests/Tests'
+      uiTests: true
+    env:
+      URL: $(Url)
+      USERNAME: $(Username)
+      PASSWORD: $(Password)
