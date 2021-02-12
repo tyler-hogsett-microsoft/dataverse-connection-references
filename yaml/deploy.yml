@@ -92,6 +92,8 @@ jobs:
 - job: Test
   pool:
     vmImage: windows-latest
+  variables:
+  - group: TestCredentials
   steps:
   - download: BuildTests
   - task: VSTest@2
@@ -99,3 +101,7 @@ jobs:
       testSelector: 'testAssemblies'
       testAssemblyVer2: 'Contoso.Tests.dll'
       searchFolder: '$(Pipeline.Workspace)/BuildTests/Tests'
+    env:
+      URL: $(Url)
+      USERNAME: $(Username)
+      PASSWORD: $(Password)
