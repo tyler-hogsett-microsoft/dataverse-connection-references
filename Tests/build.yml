@@ -12,7 +12,13 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'restore'
+    restoreSolution: 'EasyRepro/UIAutomation.sln'
+  name: RestoreEasyRepro
+- task: NuGetCommand@2
+  inputs:
+    command: 'restore'
     restoreSolution: 'Tests/Tests.sln'
+  name: RestoreTests
 - task: VSBuild@1
   inputs:
     solution: 'Tests/Tests.sln'
