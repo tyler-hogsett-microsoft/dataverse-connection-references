@@ -32,14 +32,22 @@ resources:
     trigger:
       branches:
       - main
+  - pipeline: BuildTests
+    branch: main
+    source: BuildTests
+    trigger:
+      branches:
+      - main
+
+variables:
+- group: Production
 
 jobs:
-- deployment:
+- deployment: Deploy
   environment: production
   pool:
     vmImage: windows-latest
   variables:
-  - group: Production
   - group: ClientCredentials
   strategy:
     runOnce:
@@ -81,3 +89,6 @@ jobs:
             SolutionInputFile: '$(Pipeline.Workspace)/BuildPlugins/packed-solution/ContosoPlugins_managed.zip'
             AsyncOperation: true
           name: ImportPlugins
+- job: Test
+  pool:
+    vmImage: windows-latest
