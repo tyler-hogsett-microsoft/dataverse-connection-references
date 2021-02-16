@@ -1,37 +1,37 @@
 trigger: none
 
 resources:
-#  pipelines:
-#  - pipeline: BuildCanvasApps
-#    branch: main
-#    source: BuildCanvasApps
-#    trigger:
-#      branches:
-#      - main
-#  - pipeline: BuildConnectionReferences
-#    branch: main
-#    source: BuildConnectionReferences
-#    trigger:
-#      branches:
-#      - main
-#  - pipeline: BuildDataModel
-#    branch: main
-#    source: BuildDataModel
-#    trigger:
-#      branches:
-#      - main
-#  - pipeline: BuildFlows
-#    branch: main
-#    source: BuildFlows
-#    trigger:
-#      branches:
-#      - main
-#  - pipeline: BuildPlugins
-#    branch: main
-#    source: BuildPlugins
-#    trigger:
-#      branches:
-#      - main
+  pipelines:
+  - pipeline: BuildCanvasApps
+    branch: main
+    source: BuildCanvasApps
+    trigger:
+      branches:
+      - main
+  - pipeline: BuildConnectionReferences
+    branch: main
+    source: BuildConnectionReferences
+    trigger:
+      branches:
+      - main
+  - pipeline: BuildDataModel
+    branch: main
+    source: BuildDataModel
+    trigger:
+      branches:
+      - main
+  - pipeline: BuildFlows
+    branch: main
+    source: BuildFlows
+    trigger:
+      branches:
+      - main
+  - pipeline: BuildPlugins
+    branch: main
+    source: BuildPlugins
+    trigger:
+      branches:
+      - main
   - pipeline: BuildTests
     branch: main
     source: BuildTests
